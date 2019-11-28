@@ -1,0 +1,23 @@
+---
+# task for for php
+- name: Install php 7 with the most common packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+    - php7.2
+    - php7.2-gd
+    - php7.2-imap
+    - php7.2-mbstring
+    - php7.2-mysql
+    - php7.2-opcache
+    - php7.2-pdo
+  notify: restart apache2
+- name: Upload index.php file  to the remote web directory
+  copy:
+    src: index.php
+    dest: /var/www/html
+    owner: ubuntu
+    group: ubuntu

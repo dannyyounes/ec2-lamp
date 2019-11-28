@@ -1,0 +1,7 @@
+---
+# tasks file for apache2
+- name: Ensure that the apache package is not installed on the system
+  apt:
+    name: apache2
+    state: absent
+    
